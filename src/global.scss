@@ -24,3 +24,134 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-content{
+    --ion-background-color: #F2F2F2!important; 
+  }
+
+  ion-content.menu{
+    --ion-background-color: #536dfe !important
+  }
+  
+  ion-item{
+    border-radius: 15px;
+    border: 1px solid #536dfe;
+  }
+   h1,h2{
+     color: whitesmoke;
+   }
+   h3{
+     color: #333333;
+   }
+
+   h3.active-country{
+       color: #bb9604;
+   }
+
+   h3.recovered-country{
+    color: #489e7f;
+}
+
+h3.death-country{
+    color:#af2833;
+}
+   span.active-country{
+       color:  #bb9604;
+       font-weight: bold;
+   }
+
+   span.recovered-country{
+    color:  #489e7f;
+    font-weight: bold;
+}
+
+ion-col.active-country{
+    background-color: white;
+}
+
+ion-col.recovered-country{
+    background-color: white;
+}
+
+ion-col.death-country{
+    background-color: white;
+}
+span.death-country{
+    color:  #af2833;
+    font-weight: bold;
+}
+  
+   .border{
+     background-color: white;
+     border-radius: 15px;
+     border: 1px solid transparent;
+     padding: 5px;
+   }
+
+   .border-country{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    padding: 5px;
+   }
+  
+   .active{
+     background-color: #F1C645;
+     border-radius: 15px;
+     border: 5px solid #536dfe;
+   }
+  
+   .recovered{
+     background-color: #79CFAE;
+     border-radius: 15px;
+     border: 5px solid #536dfe;
+   }
+  
+   .death{
+     background-color: #E65C5D;
+     border-radius: 15px;
+     border: 5px solid #536dfe;
+   }
+  
+   .border-line{
+     padding: 5px 0 5px 0;
+     border-bottom: 1px solid whitesmoke;
+   }
+
+   .border-line-active-country{
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #F1C645;
+  }
+
+  .border-line-recovered-country{
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #489e7f;
+  }
+
+  .border-line-death-country{
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #af2833;
+  }
+  
+  
+   .no-border-line{
+    padding: 5px 0 5px 0;
+   }
+  
+   .global-border{
+     background-color: #536dfe;
+     border-bottom-left-radius: 30%;
+    //  border-bottom-right-radius: 30%;
+     height: 50%;
+   }
+  
+   .alert{
+     border-radius: 15px;
+     background-color: #ff8e8a;
+     border: 1px solid transparent;
+     color: red;
+   }
+  
+   .card{
+     border-radius: 15px !important;
+   }

@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+      <ion-title>Covid19 Summary</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="global-border" *ngIf="globalSummary">
+    <ion-row>
+      <ion-col class="ion-text-left">
+        <h2><ion-icon slot="start" name="globe"></ion-icon> World Wide</h2>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <ion-datetime displayFormat="DDDD MMM D, YYYY" [(ngModel)]="date"></ion-datetime>
+      </ion-col>
+    </ion-row>
+    <span *ngIf="message" class="alert">
+      <ion-icon name="information-circle"></ion-icon>{{ message }}!</span>
+    <ion-row>
+      <ion-col>
+
+        <ion-row>
+          <ion-col size="4" class="border active">
+
+            <ion-row>
+              <ion-col>
+                <span>Active</span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="border-line">
+              <ion-col class="ion-text-center">
+                <h3>{{ globalSummary.NewConfirmed | number }}</h3>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="no-border-line">
+              <ion-col class="ion-text-center"r>
+                <span> {{ globalSummary.TotalConfirmed | number }} cases</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size="4" class="border recovered">
+
+            <ion-row>
+              <ion-col>
+                <span>Recovered</span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="border-line">
+              <ion-col class="ion-text-center">
+                <h3>{{ globalSummary.NewRecovered | number }}</h3>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="no-border-line">
+              <ion-col class="ion-text-center">
+                <span> {{ globalSummary.TotalRecovered | number }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size="4" class="border death">
+
+            <ion-row>
+              <ion-col>
+                <span>Death</span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="border-line">
+              <ion-col class="ion-text-center">
+                <h3>{{ globalSummary.NewDeaths | number }}</h3>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="no-border-line">
+              <ion-col class="ion-text-center">
+                <span> {{ globalSummary.TotalDeaths | number }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center">
+      <h3> {{ chartLabel }} </h3>
+      <canvas #barChart></canvas>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid >
+    
+      <ion-item lines="none" >
+        <ion-label>Choose a country</ion-label>
+        <ion-select [(ngModel)]="SelectOptions" (ionChange)="selectCountry(SelectOptions)">
+          <ion-select-option  *ngFor="let country of countries"  [value]="country">{{ country.Country }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <!-- {{  country }} -->
+      <ion-row>
+        <ion-col>
+          <ion-datetime displayFormat="DDDD MMM D, YYYY" [(ngModel)]="countryDate"></ion-datetime>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row *ngIf="SelectOptions">
+        <ion-col>
+
+          <ion-row>
+            <ion-col size="4" class="border-country active-country">
+
+              <ion-row>
+                <ion-col>
+                  <span class="active-country">Active</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="border-line-active-country ion-text-center ">
+                <ion-col>
+                  <h3 class="active-country">{{ countryNewConfirm }}</h3>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="no-border-line ion-text-center">
+                <ion-col>
+                  <span >{{ countryTotalConfirm | number }} cases</span>
+                </ion-col>
+              </ion-row>
+              
+            </ion-col>
+
+            <ion-col size="4" class="border-country recovered-country">
+
+              <ion-row>
+                <ion-col>
+                  <span class="recovered-country">Recovered</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="border-line-recovered-country ion-text-center">
+                <ion-col>
+                  <h3 class="recovered-country">{{ countryNewRecovered }}</h3>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="no-border-line ion-text-center">
+                <ion-col>
+                  <span >{{ countryTotalRecovered | number }} cases</span>
+                </ion-col>
+              </ion-row>
+              
+            </ion-col>
+
+            <ion-col size="4" class="border-country death-country">
+
+              <ion-row>
+                <ion-col>
+                  <span class="death-country">Death</span>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="border-line-death-country ion-text-center">
+                <ion-col>
+                  <h3 class="death-country">{{ countryNewDeath }}</h3>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="no-border-line ion-text-center">
+                <ion-col>
+                  <span >{{ countryTotalDeath | number }} cases</span>
+                </ion-col>
+              </ion-row>
+              
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+      
+   
+      
+  </ion-grid>
+  <!-- <div #map id="map"></div> -->
+</ion-content>
+
+<ion-footer>
+  <span style="color: darkgray;">Created by Siti Maryam binti Noor Azman</span>
+</ion-footer>

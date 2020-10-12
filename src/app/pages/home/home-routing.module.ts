@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children: [
+      {
+        path: 'summary',
+        loadChildren: () => import('../summary/summary.module').then( m => m.SummaryPageModule)
+      },
+    ]
   }
 ];
 

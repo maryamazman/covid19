@@ -1,5 +1,7 @@
 {
   "name": "covid-sidemenu",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
